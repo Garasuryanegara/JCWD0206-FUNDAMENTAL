@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+ </head>
+ <body></body>
+ <script>
+  //prompt
+  let nama = prompt('Hello, nama anda siapa?');
+
+  function greet() {
+   alert(`Perkenalkan Nama saya adalah ${nama}`);
+  }
+
+  while (true) {
+   let opt = prompt(`1. Perkenalan
+  2. Exit`);
+
+   if (opt == 1) {
+    greet();
+   } else if (opt == 2) {
+    break;
+   }
+  }
+ </script>
+</html>
