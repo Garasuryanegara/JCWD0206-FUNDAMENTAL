@@ -68,11 +68,11 @@ const calculate = (students = []) => {
  //2 ==1 ? false
  // 50 + richarcd.age
  // 50 + 24 = 74
+ // return 74/3 = 24.67
 
  let Score = new HLA(
   findMax(students, 'score'),
   findMin(students, 'score'),
-
   findAvg(students, 'score')
  );
 
