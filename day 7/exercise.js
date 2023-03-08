@@ -187,17 +187,6 @@ obj2 = {
 
 console.log(intersec(obj1, obj2));
 
-let arr = [
- { name: 'Student 1', email: 'student1@mail.com' },
- { name: 'Student 2', email: 'student2@mail.com' }
-];
-let arr2 = [
- { name: 'Student 1', email: 'student1@mail.com' },
- { name: 'Student 3', email: 'student3@mail.com' }
-];
-
-console.log(Object.assign(arr, arr2));
-
 // arr.map((val)=> {
 
 // })
@@ -241,17 +230,41 @@ function faktorial(n) {
 }
 
 function faktorial2(n, sum = 1) {
- let result = sum;
  if (n == 1) {
   console.log(sum);
-  return result;
+  return sum;
  }
 
- faktorial2(n - 1, (sum *= n));
+ return faktorial2(n - 1, (sum *= n));
 }
-let result = faktorial2(5);
-console.log(result);
-// console.log(faktorial2(5));
 
-// faktorial2(5);
-// console.log(faktorial(5));
+let a = faktorial2(5);
+
+console.log(a);
+
+let arr = [
+ { name: 'Student 1', email: 'student1@mail.com' },
+ { name: 'Student 2', email: 'student2@mail.com' }
+];
+let arr2 = [
+ { name: 'Student 1', email: 'student1@mail.com' },
+ { name: 'Student 3', email: 'student3@mail.com' }
+];
+const mergeArr = (arr1, arr2) => {
+ arr2.map((v) => {
+  //ada ga hasil find dari arr1. dimana val.name == v.name
+  !arr1.find((val) => {
+   return val.name == v.name && val.email == v.email;
+  })
+   ? arr1.push(v)
+   : null;
+ });
+ return arr1;
+};
+
+console.log(mergeArr(arr, arr2));
+
+let number = 300;
+let cek = 0;
+let str = `${Boolean(cek) ? number : null} `;
+console.log(str);
