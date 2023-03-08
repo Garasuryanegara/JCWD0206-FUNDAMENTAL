@@ -264,7 +264,7 @@ const mergeArr = (arr1, arr2) => {
 
 console.log(mergeArr(arr, arr2));
 
-let number = 300;
-let cek = 0;
-let str = `${Boolean(cek) ? number : null} `;
-console.log(str);
+// let number = 300;
+// let cek = 0;
+// let str = `${Boolean(cek) ? number : null} `;
+// console.log(str);
