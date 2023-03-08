@@ -122,8 +122,11 @@ console.log(anakBaru.getEmployeeName()); //undefined
 anakBaru.setEmployeeName('Abart');
 console.log(anakBaru.getEmployeeName()); // Abart
 anakBaru.setEmployeeAge(100);
-console.log(anakBaru.getEmployeeAge());
+console.log(anakBaru.getEmployeeAge()); // 100
+console.log(anakBaru.employeeName); // undefined
 
+//#employeeName
+//employeeName
 //inherit
 
 class Product {
