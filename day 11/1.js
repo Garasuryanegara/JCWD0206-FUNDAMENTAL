@@ -3,32 +3,41 @@
 function convertColumnExcel(column = '') {
  let arrAlpha = ' abcdefghijklmnopqrstuvwxyz';
  //a = 1
- //ab = 27 => 26*1 + 1
- //bb = 26 *2 + 2
+ //ab = 27 => 26*1 + 2
+ //bc = 26 * index ke 0 + index ke 1
  //zz = 702 => 26*26 +26
  //aaa => 703 => 1(26*26) + (1*26) + 1
- //baa => 2(26*26) + (1*26) + 1
+ //bcd => 2(26*26) + (3*26) + 4
+
+ //zzz => [26,26,26]
+ //abc => [1,2,3]
 
  let numbers = column
   .toLowerCase()
-  .split('')
-  .map((letter) => arrAlpha.indexOf(letter));
+  .split('') //jadi array
+  .map((letter) => arrAlpha.indexOf(letter)); //looping
  console.log(numbers);
 
  if (numbers.length === 1) {
   return numbers[0];
  } else if (numbers.length === 2) {
-  return 26 * numbers[0] + numbers[1];
+  return 26 * numbers[0] + numbers[1]; // 26 * 1 + 2 = 28
  } else if (numbers.length === 3) {
+  //[26,26,26]
+  //26 * (26*26) + 26 *26 + 26
+
+  //ACD [1,3,4]
+  //1 * (26*26) + 3 *26 + 4
   return numbers[0] * (26 * 26) + numbers[1] * 26 + numbers[2];
  } else {
   return 'tidak bisa lebih dari 3 digit column';
  }
 }
 
-console.log(convertColumnExcel('ab'));
+console.log(convertColumnExcel('CD'));
 
-// console.log(parseInt('z', 36) - 9);
+// console.log(parseInt('3000', 36));
+console.log(parseInt('a', 36) - 9);
 
 let column = 'AB';
 let arrAlpha = ' abcdefghijklmnopqrstuvwxyz';
