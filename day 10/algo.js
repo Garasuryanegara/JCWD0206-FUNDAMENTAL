@@ -118,3 +118,26 @@ function bubble2(arr = [], number = 0) {
 //cek 5 >4 ?
 
 console.log(bubble2([5, 3, 8, 4, 6]));
+
+console.log(`=================== Selection Short =====================`);
+
+function selectionSort(arr) {
+ let min; //undefined
+ //arr.length = 9
+ for (let i = 0; i < arr.length; i++) {
+  min = i; //0 , 1
+  for (let j = i + 1; j < arr.length; j++) {
+   //j = 1, 2 , 3
+   //1 < 9 , 2 < 9, 3 < 9
+   //72 < 29 ? false, 98 < 29?,  13 < 29? true, 87 < 13,
+   console.log('nilai j = ' + j);
+   console.log('nilai min = ' + min);
+
+   if (arr[j] < arr[min]) min = j; // min = 3
+  }
+  if (min !== i) [arr[i], arr[min]] = [arr[min], arr[i]];
+  // 3 !== 0 ? [29,13] = [13,29]
+ }
+ return arr;
+}
+console.log(selectionSort([29, 72, 98, 13, 87, 66, 51, 52, 36]));

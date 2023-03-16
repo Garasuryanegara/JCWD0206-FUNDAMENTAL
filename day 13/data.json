@@ -1,0 +1,39 @@
+{
+ "users": [
+  {
+   "id": 1,
+   "name": "udin",
+   "age": 39,
+   "username": "udin1"
+  },
+  {
+   "id": 2,
+   "name": "ujang",
+   "age": 25,
+   "username": "jan9"
+  },
+  {
+   "id": 3,
+   "name": "ujung",
+   "age": 27,
+   "username": "jung"
+  }
+ ],
+ "laptops": [
+  {
+   "id": 1,
+   "nama": "acer",
+   "userId": 1
+  },
+  {
+   "id": 2,
+   "nama": "asus",
+   "userId": 2
+  },
+  {
+   "id": 3,
+   "nama": "macbook",
+   "userId": 3
+  }
+ ]
+}
