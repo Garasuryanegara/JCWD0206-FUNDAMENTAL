@@ -27,6 +27,16 @@ function cuan(prices = []) {
 
 // console.log(cuan([10000, 2, 3, 4, 100, 7, 8]));
 console.log(cuan([10, 4, 3, 2, 9, 1, 3]));
+//val = 10
+//i = 1
+// prices[i] = 4
+//max = 4, max = 9
+//arrcuan.push(10-9) = -1
+//arrcuan = [-1,]
+//val =4
+//max = 9
+//arrcuan.push(9-4) = 5
+//arrcuan = [-1,5,]
 
 function cuan2(prices = []) {
  let arrCuan = [];
@@ -43,5 +53,9 @@ function cuan2(prices = []) {
 }
 
 console.log(cuan2([10, 4, 3, 2, 9, 1, 3]));
+//min = 5
+//loop 1x => 3 > 1= 2
 
 //10, 4, 3, 2, 9, 1, 3
+// profit = 2 => 3-1
+// profit = 7 => 9 -2

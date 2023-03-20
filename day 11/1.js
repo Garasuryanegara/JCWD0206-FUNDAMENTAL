@@ -42,9 +42,19 @@ console.log(parseInt('a', 36) - 9);
 let column = 'AB';
 let arrAlpha = ' abcdefghijklmnopqrstuvwxyz';
 
+column.split('');
+//['A','B']
+//reduce start dari index 1 => alasannya karena tidak memiliki initial value? prev
+// reduce(cb,initial value)
+//reduce((prev,curr)=>{ prev * 26 + parseInt(A, 36) - 9 },0)
+//A,B,C
+// 0 * 26 + 1 = 1
+// 1* 26 + 2 = 28
+// 28*26 + 3 =
+
 console.log(
  column.split('').reduce((prev, curr) => {
-  return prev * 26 + parseInt(curr, 36) - 9; //cara menggunakan parseint dengan radix
-  //   return prev * 26 + arrAlpha.indexOf(curr.toLocaleLowerCase()); // cara menggunakan indexof lebih sederhana
+  //   return prev * 26 + parseInt(curr, 36) - 9; //cara menggunakan parseint dengan radix
+  return prev * 26 + arrAlpha.indexOf(curr.toLocaleLowerCase()); // cara menggunakan indexof lebih sederhana
  }, 0)
 );

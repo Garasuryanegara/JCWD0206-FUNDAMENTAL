@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Exercise</title>
+ </head>
+ <body></body>
+ <script>
+  class Keranjang {
+   constructor(produk, qty, harga, idx) {
+    this.produk = produk;
+    this.qty = qty;
+    this.harga = harga;
+    this.belanjaIdx = idx;
+   }
+  }
+  let belanja = [
+   { produk: 'Balenciaga Triple S', stock: 10, harga: 15000000 },
+   { produk: 'Nike Blazer', stock: 5, harga: 2000000 },
+   { produk: 'Air Jordan High', stock: 5, harga: 4000000 },
+   { produk: 'Yeezy', stock: 5, harga: 5000000 },
+   { produk: 'Nike Air Force One', stock: 5, harga: 2100000 },
+   { produk: 'Air Jordan Mid', stock: 5, harga: 2500000 },
+   { produk: 'Converse', stock: 5, harga: 1500000 },
+   { produk: 'Adidas Ultra Boost', stock: 5, harga: 3000000 }
+  ];
+  let tampilanBelanja = 'Silahkan Pilih Barang yang Anda Ingin Beli\n';
+  let tampilanKerangjang;
+  belanja.forEach((val, index) => {
+   tampilanBelanja +=
+    index +
+    1 +
+    '. ' +
+    val.produk +
+    ' Stock ' +
+    val.stock +
+    ' Rp.@' +
+    val.harga.toLocaleString('id-ID') +
+    '\n';
+  });
+
+  tampilanBelanja += '\nSilahkan Ketik Pilihan Anda';
+
+  let keranjang = [];
+  let menu = 0;
+  let opt;
+  while (menu != 3) {
+   menu = prompt(`Selamat Datang
+  1. Menu
+  2. Keranjang
+  3. Exit`);
+
+   if (menu == '1') {
+    opt = parseInt(prompt(tampilanBelanja));
+    if (opt > 0 && opt <= belanja.length) {
+     let item = belanja[opt - 1]; //pilih = 1 belanja[1-1 = 0]
+     //{ produk: 'Balenciaga Triple S', stock: 10, harga: 15000000 }
+     // keranjang = []
+     let checkIndex;
+
+     keranjang.find((val, idx) =>
+      val.produk == item.produk ? (checkIndex = idx) : null
+     );
+
+     let qty = parseInt(
+      prompt(
+       'Masukan Qty dari ' +
+        item.produk +
+        ' Harga Rp.@' +
+        item.harga.toLocaleString('id-ID')
+      )
+     );
+     //qty = 3
+     if (qty > item.stock || qty < 0) {
+      alert('invalid input');
+     } else {
+      checkIndex != undefined
+       ? (keranjang[checkIndex].qty = qty)
+       : keranjang.push(new Keranjang(item.produk, qty, item.harga, opt - 1));
+     } //[ {  produk: 'Balenciaga Triple S', qty: 5, harga: 15000000 }]
+    }
+   } else if (menu == 2) {
+    if (keranjang.length > 0) {
+     tampilanKerangjang = 'Keranjang Anda\n';
+     keranjang.forEach((val, index) => {
+      tampilanKerangjang +=
+       index +
+       1 +
+       '. ' +
+       val.produk +
+       ' Qty ' +
+       val.qty +
+       ' Rp.@' +
+       val.harga.toLocaleString('id-ID') +
+       '\n';
+     });
+
+     opt = prompt(
+      tampilanKerangjang +
+       "\nKetik 'checkout' untuk Checkout" +
+       '\nKetik Nomor Keranjang Anda untuk Edit/Delete'
+     );
+     //checkout
+     if (opt.toLowerCase() == 'checkout') {
+      let total = parseInt(
+       keranjang.reduce((prev, curr) => prev + curr.harga * curr.qty, 0)
+       //total = 30jt
+      );
+      let payment = 0;
+      while (payment < total) {
+       payment = prompt(
+        tampilanKerangjang + '\nTotal Harga Rp.' + total.toLocaleString('id-ID')
+       );
+       if (payment >= total)
+        alert(
+         'Terimakasih sudah berbelanja! kembalian anda Rp.' +
+          (payment - total).toLocaleString('id-ID')
+        );
+       else alert('uang anda kurang');
+      }
+      keranjang.map((val) => {
+       belanja[val.belanjaIdx].stock -= val.qty;
+      });
+      keranjang.splice(0, keranjang.length);
+      break;
+     }
+     //edit and delete
+     else if (opt > 0 && opt <= keranjang.length) {
+      let item = keranjang[opt - 1];
+      opt = prompt(`${item.produk} Qty ${
+       item.qty
+      } Harga Rp.${item.harga.toLocaleString('id-ID')} 
+1. Edit Qty
+2. Delete
+
+Ketik Pilihan Anda`);
+      switch (opt) {
+       case '1':
+        let qty = prompt('Silahkan Masukan Qty untuk Produk ' + item.produk);
+        // produk: 'Nike', qty: 5, harga: 2000000 ,belanjaIdx = 1
+        // let indx;
+        // belanja.find((val, idx) =>
+        //  val.produk == item.produk ? (indx = idx) : null
+        // );
+        if (qty <= belanja[item.belanjaIdx].stock && qty > 0) {
+         keranjang[keranjang.indexOf(item)].qty = qty;
+         alert(`Produk ${item.produk} Qty menjadi ${qty} `);
+        } else {
+         alert('qty melebihi stock atau kurang dari 1');
+        }
+        break;
+       case '2':
+        keranjang.splice(keranjang.indexOf(item), 1);
+        alert(`Produk ${item.produk} berhasil dihapus `);
+        break;
+      }
+     }
+    } else {
+     alert('Keranjang Anda Kosong');
+    }
+   } else if (menu == 3) {
+    alert('terima kasih sudah berkunjung');
+   } else {
+    alert('menu belum dibuat');
+   }
+  }
+ </script>
+</html>
