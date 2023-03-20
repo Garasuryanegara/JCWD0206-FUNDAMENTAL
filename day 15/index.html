@@ -139,11 +139,24 @@ Ketik Pilihan Anda`);
       switch (opt) {
        case '1':
         let qty = prompt('Silahkan Masukan Qty untuk Produk ' + item.produk);
-        // produk: 'Nike', qty: 5, harga: 2000000 ,belanjaIdx = 1
+        //[{ produk: 'Nike', qty: 5, harga: 2000000 ,belanjaIdx = 1}]
+        //{ produk: 'Nike', qty: 5, harga: 2000000 ,belanjaIdx = 1}
         // let indx;
         // belanja.find((val, idx) =>
         //  val.produk == item.produk ? (indx = idx) : null
         // );
+
+        //qty = 3
+
+        //belanja = array object yg ada stock
+
+        // gimana cara dapet index dari belanja tanpa looping ?
+        //item = { produk, qty, harga, belanjaIdx}
+
+        //belanja[item.belanjaIdx]
+
+        console.log(item);
+
         if (qty <= belanja[item.belanjaIdx].stock && qty > 0) {
          keranjang[keranjang.indexOf(item)].qty = qty;
          alert(`Produk ${item.produk} Qty menjadi ${qty} `);
